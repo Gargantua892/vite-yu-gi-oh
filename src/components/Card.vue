@@ -2,27 +2,27 @@
 export default {
   components: {
    
-  }
+  },
+  props: {
+        details: Object,
+        index: Number,
+    }
 }
 </script>
 
 <template>
-    <div class="card-list p-5">
-       <div class="row">
-         <div class="col-3">
-            <div class="card">
-                <img src="https://www.cardgamecorner.com/prodotti/6/224/ldd001.jpg" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h4 class="card-title text-white">Card title</h4>
-                    <h5>Genere</h5>
-                </div>
+    <div class="col-12 col-md-3 d-flex" v-if="details.archetype === 'Alien'">
+        <div class="card my-2">
+            <img :src="details.card_images[0].image_url" class="card-img-top" :alt="index">
+            <div class="card-body text-center d-flex flex-column justify-content-around">
+                <h4 class="card-title text-white">{{details.name}}</h4>
+                <h5>{{details.archetype}}</h5>
             </div>
-         </div>
-       </div>
+        </div>
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '../styles/partials/variables.scss' as *;
 .card-list{
     background-color: #fff;

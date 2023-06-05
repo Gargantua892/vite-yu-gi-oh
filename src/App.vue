@@ -1,5 +1,32 @@
-<script setup>
+<script>
+import { store } from './store.js'
 import CardList from './components/CardList.vue'
+import axios from 'axios'
+
+export default {
+  components: {
+    CardList,
+  },
+  data() {
+    return {
+      store,
+    }
+  },
+  methods: {
+    getCards(){
+      axios.get(store.apiURL)
+      .then(res => {
+        store.cardList = res.data;
+      })
+      .catch( err => {
+        console.log(err);
+      })
+    }
+  },
+  created() {
+    this.getCards();
+  }
+}
 </script>
 
 <template>
@@ -17,7 +44,7 @@ import CardList from './components/CardList.vue'
     </header>
     <main>
       <section class="container py-5">
-        <CardList />
+          <CardList />
       </section>
     </main>
   </div>
