@@ -10,7 +10,7 @@ export default {
 
 <template>
     <div>
-        <div class="dropdown open">
+        <div class="dropdown open mb-4">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                         Dropdown Button
