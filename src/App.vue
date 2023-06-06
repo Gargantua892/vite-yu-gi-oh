@@ -2,6 +2,7 @@
 import { store } from './store.js'
 import CardList from './components/CardList.vue'
 import axios from 'axios'
+import * as bootstrap from 'bootstrap';
 
 export default {
   components: {
@@ -14,17 +15,31 @@ export default {
   },
   methods: {
     getCards(){
-      axios.get(store.apiURL)
+
+      let myUrl = store.apiURL;
+      if(store.filterModel !== ""){
+        myUrl += `?archetype=${store.filterModel}`;
+      }
+
+      axios.get(myUrl)
       .then(res => {
         store.cardList = res.data;
       })
       .catch( err => {
         console.log(err);
       })
+    },
+
+    filter(){
+      axios.get(store.filterURL)
+      .then(res => {
+        store.filter = res.data;
+      })
     }
   },
   created() {
     this.getCards();
+    this.filter();
   }
 }
 </script>
@@ -44,7 +59,7 @@ export default {
     </header>
     <main>
       <section class="container py-5">
-          <CardList />
+          <CardList @filter="getCards()"/>
       </section>
     </main>
   </div>

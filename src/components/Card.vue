@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-    <div class="col-12 col-md-3 d-flex" v-if="details.archetype === 'Alien'">
+    <div class="col-12 col-md-3 d-flex">
         <div class="card my-2">
             <img :src="details.card_images[0].image_url" class="card-img-top" :alt="index">
             <div class="card-body text-center d-flex flex-column justify-content-around">
