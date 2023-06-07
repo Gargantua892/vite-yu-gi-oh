@@ -17,8 +17,14 @@ export default {
     getCards(){
 
       let myUrl = store.apiURL;
+      
       if(store.filterModel !== ""){
-        myUrl += `?archetype=${store.filterModel}`;
+        // myUrl = `${myUrl}?archetype=${store.filterModel}`;
+        myUrl = `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.filterModel}`;
+
+
+        
+        console.log(myUrl)
       }
 
       axios.get(myUrl)
@@ -59,7 +65,7 @@ export default {
     </header>
     <main>
       <section class="container py-5">
-          <CardList @filter="getCards()"/>
+          <CardList @filter="getCards"/>
       </section>
     </main>
   </div>

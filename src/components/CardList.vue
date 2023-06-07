@@ -18,16 +18,13 @@ export default {
 
 <template>
     <div>
-        <div class="dropdown open mb-4">
-            <select class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="triggerId"
-            data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
+        <div class="">
+            <select
             value="Seleziona una categoria"
-            v-model="store.filterModel">
-            <option v-for="(select, ind) in store.filter" class="dropdown-item" href="#" @click="$emit('filter')">
+            v-model="store.filterModel"
+            @change="$emit('filter')"
+            >
+            <option v-for="(select, ind) in store.filter" class="dropdown-item" href="#" :value="select.archetype_name">
                     {{select.archetype_name}}
             </option>
             </select>
